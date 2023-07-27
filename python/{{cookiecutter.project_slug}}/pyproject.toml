@@ -1,0 +1,98 @@
+[build-system]
+requires = ["setuptools>=68", "setuptools_scm[toml]>=7.1", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "{{ cookiecutter.project_slug }}"
+authors = [
+    { name = "{{ cookiecutter.full_name.replace('\"', '\\\"') }}", email = "{{ cookiecutter.email }}" },
+]
+description = "{{ cookiecutter.project_short_description }}"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { file = "LICENSE.txt" }
+keywords = []
+
+classifiers = [
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "License :: Other/Proprietary License",
+]
+dependencies = ["Click >= 8", "loguru >= 0.7"]
+dynamic = ["version"]
+
+[project.optional-dependencies]
+lint = ["black", "isort", "mypy", "ruff"]
+test = ["coverage", "pytest", "tox"]
+build = ["build"]
+update = ["cruft", "toml", "pip-tools"]
+dev = [
+    "rope",
+    "{{ cookiecutter.project_slug }}[build]",
+    "{{ cookiecutter.project_slug }}[lint]",
+    "{{ cookiecutter.project_slug }}[test]",
+    "{{ cookiecutter.project_slug }}[update]",
+]
+
+[project.urls]
+# Homepage = "https://example.com"
+# Documentation = "https://readthedocs.org"
+Repository = "https://github.com/{{ cookiecutter.username }}/{{ cookiecutter.project_slug }}.git"
+# Changelog = "https://github.com/{{ cookiecutter.username }}/{{ cookiecutter.project_slug }}/blob/master/CHANGELOG.md"
+
+[project.scripts]
+{{ cookiecutter.project_slug }} = "{{ cookiecutter.project_slug }}.cli:main"
+
+[tool.setuptools_scm]
+fallback_version = "0.0.1"
+
+[tool.mypy]
+warn_return_any = "True"
+warn_unused_configs = "True"
+disallow_untyped_defs = "True"
+disallow_untyped_calls = "True"
+ignore_missing_imports = "False"
+
+[tool.isort]
+profile = "black"
+
+[tool.coverage.run]
+branch = "True"
+source = "{{ cookiecutter.project_slug }}"
+parallel = "True"
+
+[tool.coverage.paths]
+source = ["src/", ".tox/**/site-packages"]
+
+[tool.ruff]
+select = [
+    "ERA",   # eradicate
+    "ASYNC", # flake8-async
+    "S",     # flake8-bandit
+    "B",     # flake8-bugbear
+    "A",     # flake8-builtins
+    "C4",    # flake8-comprehensions
+    "DTZ",   # flake8-datetimez
+    "RET",   # flake8-return
+    "PTH",   # flake8-use-pathlib
+    "FLY",   # flynt
+    "I",     # isort
+    "E",     # pycodestyle
+    "D",     # pydocstyle
+    "UP",    # pyupgrqde
+    "F",     # pyflakes
+    "RUF",   # ruff
+    "TRY",   # tryceratops
+]
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.ruff.pydocstyle]
+convention = "google"
+
+[tool.ruff.isort]
+known-first-party = "{{ cookiecutter.project_slug }}"

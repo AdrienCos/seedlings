@@ -1,0 +1,26 @@
+ARG PYHTON_VERSION=3.9.17
+FROM python:${PYHTON_VERSION}-slim
+
+# Create the user/group that will run the app, to avoid running as root
+RUN addgroup --system app_group && \
+    adduser \
+    --shell /bin/sh \
+    --ingroup app_group \
+    --disabled-password \
+    app_user
+
+# Copy the built Python archive
+COPY ./dist/{{cookiecutter.project_slug}}*.whl /app/
+# Copy the pinned requirements
+COPY ./requirements.txt /app/
+
+# Switch to the created user
+USER app_user
+ENV PATH="${PATH}:/home/app_user/.local/bin"
+
+# Install the Python package
+WORKDIR /app
+RUN pip install --user --no-cache --requirement ./requirements.txt ./{{cookiecutter.project_slug}}*.whl
+
+# Set the entrypoint as the package
+ENTRYPOINT [ "{{cookiecutter.project_slug}}" ]
