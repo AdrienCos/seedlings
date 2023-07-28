@@ -62,7 +62,7 @@ profile = "black"
 
 [tool.coverage.run]
 branch = true
-source = "{{ cookiecutter.project_slug }}"
+source = ["{{ cookiecutter.project_slug }}"]
 parallel = true
 
 [tool.coverage.paths]
@@ -95,4 +95,4 @@ select = [
 convention = "google"
 
 [tool.ruff.isort]
-known-first-party = "{{ cookiecutter.project_slug }}"
+known-first-party = ["{{ cookiecutter.project_slug }}"]
