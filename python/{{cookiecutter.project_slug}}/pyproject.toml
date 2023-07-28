@@ -27,7 +27,7 @@ dynamic = ["version"]
 
 [project.optional-dependencies]
 lint = ["black", "isort", "mypy", "ruff"]
-test = ["coverage", "pytest", "tox"]
+test = ["coverage[toml]", "pytest", "tox"]
 build = ["build"]
 update = ["cruft", "toml", "pip-tools"]
 dev = [
