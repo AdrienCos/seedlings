@@ -51,19 +51,19 @@ Issues = "https://github.com/{{ cookiecutter.username }}/{{ cookiecutter.project
 fallback_version = "0.0.1"
 
 [tool.mypy]
-warn_return_any = "True"
-warn_unused_configs = "True"
-disallow_untyped_defs = "True"
-disallow_untyped_calls = "True"
-ignore_missing_imports = "False"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_untyped_calls = true
+ignore_missing_imports = false
 
 [tool.isort]
 profile = "black"
 
 [tool.coverage.run]
-branch = "True"
+branch = true
 source = "{{ cookiecutter.project_slug }}"
-parallel = "True"
+parallel = true
 
 [tool.coverage.paths]
 source = ["src/", ".tox/**/site-packages"]
