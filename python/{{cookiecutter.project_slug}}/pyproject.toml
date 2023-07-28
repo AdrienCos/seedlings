@@ -29,7 +29,7 @@ dynamic = ["version"]
 lint = ["black", "isort", "mypy", "ruff"]
 test = ["coverage[toml]", "pytest", "tox"]
 build = ["build"]
-update = ["cruft", "toml", "pip-tools"]
+update = ["cruft", "tomli", "pip-tools"]
 dev = [
     "rope",
     "{{ cookiecutter.project_slug }}[build]",
