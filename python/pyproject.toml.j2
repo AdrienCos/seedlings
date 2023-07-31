@@ -255,6 +255,10 @@ pex-build = { composite = [
     "_generate_requirements_no_hashes",
     "_build_pex",
 ], help = "Build a (reproducible) PEX executable of each entrypoint of the application" }
+cross-test = { cmd = [
+    "tox",
+    "run-parallel",
+], help = "Run the test suite against multiple Python versions" }
 
 [tool.pdm.dev-dependencies]
 dev = [
