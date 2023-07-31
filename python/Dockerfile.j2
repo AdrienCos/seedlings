@@ -18,9 +18,14 @@ COPY ./requirements.txt /app/
 USER app_user
 ENV PATH="${PATH}:/home/app_user/.local/bin"
 
-# Install the Python package
+# Install the Python package and its runtime dependencies
 WORKDIR /app
-RUN pip install --user --no-cache --requirement ./requirements.txt ./{{ package_name }}*.whl
+RUN pip install --user --no-cache-dir --requirement ./requirements.txt
+# We cannot run both installs on a single `pip install` call, as the `requirements.txt`
+# file contains package hashes, and the .whl does not
+# See: https://github.com/pypa/pip/issues/4344
+# hadolint ignore=DL3059
+RUN pip install --user --no-cache-dir ./{{ package_name }}*.whl
 
 # Set the entrypoint as the package
 ENTRYPOINT [ "{{ package_name }}" ]
