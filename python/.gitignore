@@ -104,6 +104,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+.version.env
 
 # Spyder project settings
 .spyderproject
@@ -134,3 +135,11 @@ cython_debug/
 
 # PyCharm
 .idea/
+
+# pdm
+.pdm.toml
+.pdm-python
+.pdm-build/
+
+# Python requirements file, generated from the PDM lockfile
+requirements.txt
