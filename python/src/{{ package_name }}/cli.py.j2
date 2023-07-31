@@ -1,4 +1,4 @@
-"""Console script for {{ cookiecutter.project_slug }}."""
+"""Console script for {{ package_name }}."""
 
 # Standard lib imports
 import sys
@@ -8,7 +8,7 @@ import click
 from loguru import logger
 
 # Local package imports
-from {{ cookiecutter.project_slug }}.example_module import ExampleClass
+from {{ package_name }}.example_module import ExampleClass
 
 
 # Define this function as a the main command entrypoint
@@ -28,7 +28,7 @@ from {{ cookiecutter.project_slug }}.example_module import ExampleClass
 def main(
     iterations: int,
 ) -> None:
-    """Console script for {{ cookiecutter.project_slug }}."""
+    """Console script for {{ package_name }}."""
     instance = ExampleClass()
     for i in range(iterations):
         logger.info(f"Iteration number {i}: {instance.add(i, i)}")

@@ -12,7 +12,7 @@ deps =
 labels = format
 skip_install = True
 commands =
-    black --quiet src/{{ cookiecutter.project_slug }} tests
+    black --quiet src/{{ package_name }} tests
 
 [testenv:black_check]
 deps =
@@ -20,7 +20,7 @@ deps =
 labels = lint
 skip_install = True
 commands =
-    black --quiet --check src/{{ cookiecutter.project_slug }} tests
+    black --quiet --check src/{{ package_name }} tests
 
 [testenv:mypy]
 deps =
@@ -29,7 +29,7 @@ deps =
 labels = lint
 skip_install = True
 commands =
-    mypy src/{{ cookiecutter.project_slug }} tests
+    mypy src/{{ package_name }} tests
 
 [testenv:ruff]
 deps =
@@ -37,7 +37,7 @@ deps =
 labels = lint
 skip_install = True
 commands =
-    ruff check src/{{ cookiecutter.project_slug }} tests
+    ruff check src/{{ package_name }} tests
 
 [testenv:isort]
 deps =
@@ -45,7 +45,7 @@ deps =
 labels = format
 skip_install = True
 commands =
-    isort src/{{ cookiecutter.project_slug }} tests/
+    isort src/{{ package_name }} tests/
 
 [testenv:isort_check]
 deps =
@@ -53,7 +53,7 @@ deps =
 labels = lint
 skip_install = True
 commands =
-    isort --check-only --verbose src/{{ cookiecutter.project_slug }} tests/
+    isort --check-only --verbose src/{{ package_name }} tests/
 
 [testenv:py{3,38,39,310}]
 deps =

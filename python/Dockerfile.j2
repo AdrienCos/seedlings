@@ -10,7 +10,7 @@ RUN addgroup --system app_group && \
     app_user
 
 # Copy the built Python archive
-COPY ./dist/{{cookiecutter.project_slug}}*.whl /app/
+COPY ./dist/{{ package_name }}*.whl /app/
 # Copy the pinned requirements
 COPY ./requirements.txt /app/
 
@@ -20,7 +20,7 @@ ENV PATH="${PATH}:/home/app_user/.local/bin"
 
 # Install the Python package
 WORKDIR /app
-RUN pip install --user --no-cache --requirement ./requirements.txt ./{{cookiecutter.project_slug}}*.whl
+RUN pip install --user --no-cache --requirement ./requirements.txt ./{{ package_name }}*.whl
 
 # Set the entrypoint as the package
-ENTRYPOINT [ "{{cookiecutter.project_slug}}" ]
+ENTRYPOINT [ "{{ package_name }}" ]

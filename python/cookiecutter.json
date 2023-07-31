@@ -1,8 +1,0 @@
-{
-    "full_name": "[CHANGE-ME] Full name of the creator of the project",
-    "email": "[CHANGE-ME] Email address of the creator of the project",
-    "username": "[CHANGE-ME] Username or group of the creator of the project",
-    "project_name": "[CHANGE-ME] Human-friendly name of the project",
-    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
-    "project_short_description": "[CHANGE-ME] Short description of the project."
-}
