@@ -1,6 +1,7 @@
 ---
 # Settings
 _templates_suffix: .j2
+_subdirectory: python/
 ---
 # Prompts
 project_name:
