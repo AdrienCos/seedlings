@@ -42,9 +42,11 @@ Once Python and `pdm` are available, you can setup the environment with:
 git clone {{ repository_url }}
 # Move into the directory
 cd {{ package_name }}
-# Create a new virtualenv, install the project, its dependencies, and the pre-commit hooks
+# Create a new virtualenv, install the project,
+# its dependencies, and the pre-commit hooks
 pdm setup
-# Check that everything worked as expected by running the linters, test suite, and building the package
+# Check that everything worked as expected by running the linters,
+# test suite, and building the package
 # NOTE: This can take a couple of minutes
 pdm lint
 pdm test
