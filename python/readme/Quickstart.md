@@ -175,6 +175,16 @@ useful files that should be persisted, but not tracked by `git`, such as
 
 ### ...update the project to the latest version of the template?
 
+`pdm template-check`
+
+and
+
 `pdm template-update`
 
-<!-- TODO -->
+These commands will respectively check if your project is using the latest
+version of the template, and update your project to the latest release of the
+template.
+
+Any conflict created by the update of the template will be written in the
+related files, with the usual merge conflict syntax. Make sure to review and
+resolve them before committing the updates to the repository.
