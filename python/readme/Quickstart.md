@@ -19,6 +19,7 @@ documentation](./Deep-dive.md).
   - [...generate a `.pex` executable?](#generate-a-pex-executable)
   - [...generate a distribution archive?](#generate-a-distribution-archive)
   - [...build a Docker image that runs my package?](#build-a-docker-image-that-runs-my-package)
+  - [...publish my package to a Pip repository?](#publish-my-package-to-a-pip-repository)
   - [...clean my local project directory?](#clean-my-local-project-directory)
   - [...update the project to the latest version of the template?](#update-the-project-to-the-latest-version-of-the-template)
 
@@ -164,6 +165,19 @@ installed on a target machine with `pip install $FILENAME`.
 This will build a `.whl` distribution, and use it to build a minimal Docker
 image, tagged `{{ package_name }}:latest` and `{{ package_name }}:$VERSION`,
 that runs it.
+
+### ...publish my package to a Pip repository?
+
+`pdm publish`
+
+This will build the `.whl` and `.tar.gz` of the package, and upload them to
+[Pypi](https://pypi.org).
+
+**Warning**: You must run this command from a properly tagged `git` commit,
+otherwise your package will be rejected by the repository.
+
+For more control over this process, look at the [documentation of `pdm
+publish`](https://pdm.fming.dev/latest/usage/publish/)
 
 ### ...clean my local project directory?
 
