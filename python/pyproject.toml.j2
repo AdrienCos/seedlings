@@ -126,6 +126,15 @@ _mypy_check = { cmd = [
     "src/",
     "tests/",
 ], help = "Check the typing of the code" }
+_typos_check = { cmd = [
+    "typos",
+    ".",
+], help = "Check the project for any typography" }
+_typos_fix = { cmd = [
+    "typos",
+    "--write-changes",
+    ".",
+], help = "Fix any typo found in the project" }
 _pytest = { cmd = ["pytest"], help = "Run the test suite" }
 _coverage_run = { cmd = [
     "coverage",
@@ -208,12 +217,14 @@ _build_wheel = { cmd = [
 format = { composite = [
     "_black_format",
     "_isort_format",
+    "_typos_fix",
 ], help = "Format the codebase" }
 lint = { composite = [
     "_black_check",
     "_isort_check",
     "_mypy_check",
     "_ruff_check",
+    "_typos_check",
 ], help = "Lint the codebase" }
 test = { composite = ["_pytest"], help = "Run the test suite" }
 coverage = { composite = [
@@ -276,4 +287,5 @@ dev = [
     "tox-pdm>=0.6.1",
     "setuptools-scm>=7.1",
     "pex>=2.1.140",
+    "typos>=1.16.1",
 ]

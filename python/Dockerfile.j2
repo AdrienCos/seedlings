@@ -1,5 +1,5 @@
-ARG PYHTON_VERSION=3.9.17
-FROM python:${PYHTON_VERSION}-slim
+ARG PYTHON_VERSION=3.9.17
+FROM python:${PYTHON_VERSION}-slim
 
 # Create the user/group that will run the app, to avoid running as root
 RUN addgroup --system app_group && \
