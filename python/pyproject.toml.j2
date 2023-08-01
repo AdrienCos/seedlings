@@ -25,10 +25,10 @@ dynamic = ["version"]
 
 
 [project.urls]
-Homepage = "https://github.com/{{ package_name }}/{{ package_name }}"
-Documentation = "https://github.com/{{ package_name }}/{{ package_name }}/wiki"
-Repository = "https://github.com/{{ package_name }}/{{ package_name }}"
-Issues = "https://github.com/{{ package_name }}/{{ package_name }}/issues"
+Homepage = "{{ repository_url }}"
+Documentation = "{{ repository_url }}/wiki"
+Repository = "{{ repository_url }}"
+Issues = "{{ repository_url }}/issues"
 
 [project.scripts]
 {{ package_name }} = "{{ package_name }}.cli:main"
@@ -217,8 +217,10 @@ _build_wheel = { cmd = [
 format = { composite = [
     "_black_format",
     "_isort_format",
-    "_typos_fix",
 ], help = "Format the codebase" }
+spell = { composite = [
+    "_typos_fix",
+], help = "Fix the spelling mistakes found in the project" }
 lint = { composite = [
     "_black_check",
     "_isort_check",

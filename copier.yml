@@ -35,6 +35,16 @@ author_email:
     Your email does not include an @.
     {% endif %}
 
+repository_url:
+  type: str
+  help: Where will your project's repository be located?
+  default: |-
+    https://github.com/{{ author_username }}/{{ package_name }}.git
+  validator: >-
+    {% if not ('https://' in repository_url) or ('http://' in repository_url) %}
+    The URL must begin with https:// or http://
+    {% endif %}
+
 short_description:
   type: str
   help: (Optional) Write a short description of this project
