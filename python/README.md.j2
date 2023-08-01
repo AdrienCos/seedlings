@@ -1,1 +1,90 @@
 # {{ project_name }}
+
+{{ short_description }}
+
+- [Usage](#usage)
+- [Installation](#installation)
+  - [With `pipx`](#with-pipx)
+  - [With a `.pex` executable](#with-a-pex-executable)
+  - [With `pip`, from a release version](#with-pip-from-a-release-version)
+  - [With `pip`, from sources](#with-pip-from-sources)
+- [Development Quickstart](#development-quickstart)
+
+## Usage
+
+Describe here how to use this Python application/package: CLI options and flags,
+API when imported by another package, etc.
+
+## Installation
+
+Installing this package can be achieved in multiple ways.
+
+### With `pipx`
+
+[`pipx`](https://pypa.github.io/pipx/) is the recommended install method if you
+want to install the CLI provided by this package on your system, have it
+accessible anywhere, and not have to mess with `virtualenv`s.
+
+Once you have `pipx` installed on your machine, you can proceed with installing
+this package.
+
+- If this package is available on a Pip repository (e.g.
+  [pypi.org](https://pypi.org)), then you can simply run:
+
+```sh
+pipx install {{ package_name }}
+```
+
+- If you want to install it directly from the repository:
+
+```sh
+pipx install git+https://github.com/{{ author_name }}/{{ package_name }}
+```
+
+- If you downloaded a `.whl` or `.tar.gz` archive from the releases:
+
+```sh
+# Prebuilt wheel
+pipx install {{ package_name }}-${VERSION}-py3-none-any.whl
+# Tarball
+pipx install {{ package_name }}-${VERSION}.tar.gz
+```
+
+where `$VERSION` is the version of the package you downloaded.
+
+### With a `.pex` executable
+
+[`pex`](https://pex.readthedocs.io/en/latest/) is an executable Python
+virtualenv format, that can be executed on any machine that provides a suitable
+Python interpreter.
+
+To install the CLI provided by `{{ package_name }}`, download the `.pex` files
+of the latest release, and copy them somewhere in your `$PATH` (on Linux,
+`~/.local/bin` is often a good idea). The executables will then be available in
+your shell.
+
+### With `pip`, from a release version
+
+If you do not wish to use the methods above, you can use `pip` instead. The same
+instructions as for `pipx` apply. However, remember to always run your `pip`
+commands from inside a `virtualenv`, to avoid polluting your system packages.
+
+### With `pip`, from sources
+
+If you want to install this project from source, you will need to first download
+them. For this, you can either download a release tarball, or directly clone
+this repository.
+
+Make sure you have a virtualenv activated to install this package.
+
+You can then enter the project directory (with `cd {{ package_name }}/`), and
+install the project with:
+
+``` sh
+pip install .
+```
+
+## Development Quickstart
+
+A quickstart guide/cheatsheet is [available here](./readme/Quickstart.md), it
+lists how to use the development tools for this project.
