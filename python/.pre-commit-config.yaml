@@ -11,6 +11,9 @@ repos:
       - id: check-toml
       - id: check-yaml
       - id: check-added-large-files
+      - id: check-merge-conflicts
+        # Always check, not only during merges
+        args: [--assume-in-merge]
   - repo: https://github.com/hadolint/hadolint
     rev: v2.12.1-beta
     hooks:
