@@ -13,6 +13,8 @@ documentation](./Deep-dive.md).
   - [...spellcheck my project?](#spellcheck-my-project)
   - [...lint my code?](#lint-my-code)
   - [...generate test coverage?](#generate-test-coverage)
+  - [...add runtime dependencies to my project?](#add-runtime-dependencies-to-my-project)
+  - [...add development dependencies to my project?](#add-development-dependencies-to-my-project)
   - [...bump the version number of my package?](#bump-the-version-number-of-my-package)
   - [...generate a `.pex` executable?](#generate-a-pex-executable)
   - [...generate a distribution archive?](#generate-a-distribution-archive)
@@ -110,6 +112,23 @@ tell you if your code passes them.
 
 This will run the test suite against the available Python3 install, and generate
 a code coverage report in the `htmlcov` directory.
+
+### ...add runtime dependencies to my project?
+
+`pdm add $PACKAGE`
+
+This will add the requested package to `pyproject.toml`, resolve the all the
+dependencies, and lock them in `pdm.lock`.
+
+**Note**: `$PACKAGE` can contain version specifier, such as `"foobar>=2,<3"`
+
+### ...add development dependencies to my project?
+
+`pdm add -d/--dev $PACKAGE`
+
+Similar to the previous command, this will add the package to different list of
+dependencies, that is only installed when installing the project in development
+mode with `pdm`, and not in production.
 
 ### ...bump the version number of my package?
 
