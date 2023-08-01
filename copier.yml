@@ -39,7 +39,7 @@ repository_url:
   type: str
   help: Where will your project's repository be located?
   default: |-
-    https://github.com/{{ author_username }}/{{ package_name }}.git
+    https://github.com/{{ author_username }}/{{ package_name }}
   validator: >-
     {% if not ('https://' in repository_url) or ('http://' in repository_url) %}
     The URL must begin with https:// or http://
