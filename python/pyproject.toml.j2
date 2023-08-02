@@ -1,0 +1,305 @@
+[build-system]
+requires = ["setuptools>=68", "setuptools_scm[toml]>=7.1", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "{{ package_name }}"
+authors = [{ name = "{{ author_name }}", email = "{{ author_email }}" }]
+description = "{{ project_name }}"
+readme = "README.md"
+requires-python = ">=3.8,<3.12"
+license = { text = "MIT" }
+keywords = []
+
+classifiers = [
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: MIT License",
+]
+dependencies = ["Click >= 8", "loguru >= 0.7"]
+dynamic = ["version"]
+
+
+[project.urls]
+Homepage = "{{ repository_url }}"
+Documentation = "{{ repository_url }}/wiki"
+Repository = "{{ repository_url }}"
+Issues = "{{ repository_url }}/issues"
+
+[project.scripts]
+{{ package_name }} = "{{ package_name }}.cli:main"
+
+[tool.setuptools_scm]
+fallback_version = "0.0.1"
+
+[tool.mypy]
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_untyped_calls = true
+ignore_missing_imports = false
+
+[tool.isort]
+profile = "black"
+
+[tool.coverage.run]
+branch = true
+source = ["{{ package_name }}"]
+parallel = true
+
+[tool.coverage.paths]
+source = ["src/", ".tox/**/site-packages"]
+
+[tool.ruff]
+select = [
+    "ERA",   # eradicate
+    "ASYNC", # flake8-async
+    "S",     # flake8-bandit
+    "B",     # flake8-bugbear
+    "A",     # flake8-builtins
+    "C4",    # flake8-comprehensions
+    "DTZ",   # flake8-datetimez
+    "RET",   # flake8-return
+    "PTH",   # flake8-use-pathlib
+    "FLY",   # flynt
+    "I",     # isort
+    "E",     # pycodestyle
+    "D",     # pydocstyle
+    "UP",    # pyupgrqde
+    "F",     # pyflakes
+    "RUF",   # ruff
+    "TRY",   # tryceratops
+]
+extend-exclude = ["setup.py"]
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/*" = ["S101", "D"]
+
+[tool.ruff.pydocstyle]
+convention = "google"
+
+[tool.ruff.isort]
+known-first-party = ["{{ package_name }}"]
+
+[tool.pdm.scripts]
+# Common configuration
+_.env_file = ".version.env"
+# Internal helper scripts
+_black_format = { cmd = [
+    "black",
+    "./src",
+    "tests/",
+], help = "Format of the code" }
+_isort_format = { cmd = [
+    "isort",
+    "./src",
+    "tests/",
+], help = "Format of the imports" }
+_black_check = { cmd = [
+    "black",
+    # Do not actually format the code
+    "--check",
+    "./src",
+    "tests/",
+], help = "Check the formatting of the code" }
+_isort_check = { cmd = [
+    "isort",
+    # Do not actually format the code
+    "--check",
+    "./src",
+    "tests/",
+], help = "Check the formatting of the imports" }
+_ruff_check = { cmd = [
+    "ruff",
+    # Do not actually fix the code
+    "check",
+    "./src",
+    "tests/",
+], help = "Check the overall code" }
+_mypy_check = { cmd = [
+    "mypy",
+    "src/",
+    "tests/",
+], help = "Check the typing of the code" }
+_typos_check = { cmd = [
+    "typos",
+    ".",
+], help = "Check the project for any typography" }
+_typos_fix = { cmd = [
+    "typos",
+    "--write-changes",
+    ".",
+], help = "Fix any typo found in the project" }
+_pytest = { cmd = ["pytest"], help = "Run the test suite" }
+_coverage_run = { cmd = [
+    "coverage",
+    "run",
+    "-m",
+    "pytest",
+], help = "Run the test suite and collect the coverage data" }
+_coverage_combine = { cmd = [
+    "coverage",
+    "combine",
+], help = "Combine all the generated test reports" }
+_coverage_report = { cmd = [
+    "coverage",
+    "report",
+], help = "Generate a coverage report" }
+_coverage_xml = { cmd = [
+    "coverage",
+    "xml",
+], help = "Export an XML coverage report" }
+_coverage_html = { cmd = [
+    "coverage",
+    "html",
+], help = "Export an HTML coverage report" }
+_precommit_install = { cmd = [
+    "pre-commit",
+    "install",
+], help = "Install the pre-cmmit hooks" }
+_precommit_update = { cmd = [
+    "pre-commit",
+    "autoupdate",
+], help = "Update the pre-commit hooks to their latest version" }
+_packages_install = { cmd = [
+    "pdm",
+    "install",
+], help = "Install the package's prod and dev dependencies" }
+_dev_packages_update = { cmd = [
+    "pdm",
+    "update",
+    # Do not touch the prod packages
+    "--no-default",
+    # Only touch the dev packages
+    "--dev",
+], help = "Update the dev packages to their latest version" }
+_generate_version = { shell = "echo PACKAGE_VERSION=$(python -m setuptools_scm) | sed 's/+/./' > .version.env", help = "Export the package's version number to .version.env" }
+_generate_requirements = { cmd = [
+    "pdm",
+    "export",
+    "--format",
+    "requirements",
+    "--prod",
+    "--output",
+    "requirements.txt",
+], help = "Generate a requirements file for the runtime dependencies" }
+_generate_requirements_no_hashes = { cmd = [
+    "pdm",
+    "export",
+    "--format",
+    "requirements",
+    "--prod",
+    "--without-hashes",
+    "--output",
+    "requirements.txt",
+], help = "Generate a requirements file for the runtime dependencies" }
+_build_pex = { cmd = [
+    "python",
+    "setup.py",
+    "bdist_pex",
+    "--bdist-all",
+    "--pex-args",
+    "--requirement=requirements.txt",
+], help = "Build a PEX file of the package" }
+_build_docker_image = { shell = "docker build -t {{ package_name }}:latest -t {{ package_name }}:${PACKAGE_VERSION} ." }
+_build_wheel = { cmd = [
+    "pdm",
+    "build",
+    "--no-sdist",
+], help = "Only build the .whl package" }
+
+# Public scripts
+format = { composite = [
+    "_black_format",
+    "_isort_format",
+], help = "Format the codebase" }
+spell = { composite = [
+    "_typos_fix",
+], help = "Fix the spelling mistakes found in the project" }
+lint = { composite = [
+    "_black_check",
+    "_isort_check",
+    "_mypy_check",
+    "_ruff_check",
+    "_typos_check",
+], help = "Lint the codebase" }
+test = { composite = ["_pytest"], help = "Run the test suite" }
+coverage = { composite = [
+    "_coverage_run",
+    "_coverage_combine",
+    "_coverage_report",
+    "_coverage_xml",
+    "_coverage_html",
+], help = "Measure and report the coverage of the test suite" }
+help = { cmd = "pdm run --list", help = "Print the list of existing commands" }
+setup = { composite = [
+    "_packages_install",
+    "_precommit_install",
+], help = "Install and configure the development environment" }
+dev-update = { composite = [
+    "_precommit_update",
+    "_dev_packages_update",
+], help = "Update the development dependencies and tools" }
+clean = { cmd = [
+    "git",
+    "clean",
+    "--force",
+    # Allow the deletion of ignored files
+    "-x",
+    # Allow the deletion of directories
+    "-d",
+    "--exclude",
+    ".venv/",
+    "--exclude",
+    ".pdm-python",
+], help = "Delete all the caches and build artifacts" }
+docker-build = { composite = [
+    "_generate_version",
+    "_generate_requirements",
+    "_build_wheel",
+    "_build_docker_image",
+], help = "Build a Docker image of the application" }
+pex-build = { composite = [
+    "_generate_requirements_no_hashes",
+    "_build_pex",
+], help = "Build a (reproducible) PEX executable of each entrypoint of the application" }
+cross-test = { cmd = [
+    "tox",
+    "run-parallel",
+], help = "Run the test suite against multiple Python versions" }
+template-update = { cmd = [
+    "copier",
+    "update",
+    '--conflict',
+    "inline",
+], help = "Update the project to the latest version of the template" }
+template-check = { cmd = [
+    "copier",
+    "update",
+    "--pretend",
+    "--defaults",
+], help = "Check if the project uses the latest version of the template" }
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "black>=23.7.0",
+    "isort>=5.12.0",
+    "ruff>=0.0.280",
+    "mypy>=1.4.1",
+    "coverage>=7.2.7",
+    "toml>=0.10.2",
+    "rope>=1.9.0",
+    "pre-commit>=3.3.3",
+    "tox>=4.6.4",
+    "tox-pdm>=0.6.1",
+    "setuptools-scm>=7.1",
+    "pex>=2.1.140",
+    "typos>=1.16.2",
+    "copier>=8.1.0",
+]
