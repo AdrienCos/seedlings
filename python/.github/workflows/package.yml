@@ -1,0 +1,16 @@
+---
+name: Build Python package
+on: push
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/common
+      - run: pdm build
+      - name: Archive pex executables
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist/
