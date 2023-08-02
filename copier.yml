@@ -8,6 +8,7 @@ _min_copier_version: "8.1.0"
 project_name:
   type: str
   help: What is your the name of the project?
+  default: Sapling
 
 package_name:
   type: str
@@ -22,10 +23,12 @@ package_name:
 author_name:
   type: str
   help: What is your name?
+  default: John Doe
 
 author_username:
   type: str
   help: What is your username?
+  default: johndoe
 
 author_email:
   type: str
@@ -34,6 +37,7 @@ author_email:
     {% if not '@' in author_email %}
     Your email does not include an @.
     {% endif %}
+  default: johndoe@example.com
 
 repository_url:
   type: str
@@ -48,4 +52,4 @@ repository_url:
 short_description:
   type: str
   help: (Optional) Write a short description of this project
-  default: A new Python project
+  default: A Python project based on the Seedlings template
