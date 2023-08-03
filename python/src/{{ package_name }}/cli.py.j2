@@ -21,14 +21,26 @@ from {{ package_name }}.example_module import ExampleClass
     type=int,
     default=1,
 )
+@click.option(
+    "-v",
+    "--verbose",
+    help="Verbose mode",
+    count=True,
+)
 # Get the version of the package
 @click.version_option()
 # Display some help
 @click.help_option("-h", "--help")
 def main(
     iterations: int,
+    verbose: int,
 ) -> None:
     """Console script for {{ package_name }}."""
+    # Set the log level if required
+    if verbose == 0:
+        logger.remove()
+        logger.add(sys.stderr, level="INFO")
+
     instance = ExampleClass()
     for i in range(iterations):
         logger.info(f"Iteration number {i}: {instance.add(i, i)}")
