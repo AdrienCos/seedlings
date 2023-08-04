@@ -1,6 +1,11 @@
 ---
 name: Test
-on: push
+on:
+  push:
+    branches-ignore:
+      - "main"
+      - "master"
+  pull_request:
 
 jobs:
   main:

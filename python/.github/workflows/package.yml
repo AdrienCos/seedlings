@@ -1,6 +1,11 @@
 ---
 name: Build Python package
-on: push
+on:
+  push:
+    branches-ignore:
+      - "main"
+      - "master"
+  pull_request:
 
 jobs:
   main:
@@ -8,8 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/common
-      - run: pdm build
-      - name: Archive pex executables
+      - name: Build the Python dist
+        run: pdm build
+      - name: Export the Python dist
         uses: actions/upload-artifact@v3
         with:
           name: dist

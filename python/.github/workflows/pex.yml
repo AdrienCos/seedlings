@@ -1,6 +1,11 @@
 ---
 name: Build Pex executables
-on: push
+on:
+  push:
+    branches-ignore:
+      - "main"
+      - "master"
+  pull_request:
 
 jobs:
   main:
@@ -8,8 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/common
-      - run: pdm pex-build
-      - name: Archive pex executables
+      - name: Build the Pex executables
+        run: pdm pex-build
+      - name: Export the Pex executables
         uses: actions/upload-artifact@v3
         with:
           name: pex
