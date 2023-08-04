@@ -53,3 +53,8 @@ short_description:
   type: str
   help: (Optional) Write a short description of this project
   default: A Python project based on the Seedlings template
+
+enable_release_ci:
+  type: bool
+  help: Do you want an automated Release CI?
+  default: false
