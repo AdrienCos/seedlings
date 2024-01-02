@@ -140,6 +140,11 @@ _typos_fix = { cmd = [
     "--write-changes",
     ".",
 ], help = "Fix any typo found in the project" }
+_lockfile_check = { cmd = [
+    "pdm",
+    "lock",
+    "--check",
+], help = "Check that the lockfile is up-to-date" }
 _pytest = { cmd = ["pytest"], help = "Run the test suite" }
 _coverage_run = { cmd = [
     "coverage",
