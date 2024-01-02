@@ -103,7 +103,7 @@ It will run `typos` on the entire project, and fix any typo it finds.
 
 `pdm lint`
 
-This will call various linters (`black`, `isort`, `ruff`, `mypy`, `typos`), and
+This will call various linters (`black`, `isort`, `ruff`, `pyright`, `typos`), and
 tell you if your code passes them.
 
 ### ...generate test coverage?

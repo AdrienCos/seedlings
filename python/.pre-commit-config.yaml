@@ -45,9 +45,7 @@ repos:
     rev: v0.1.9
     hooks:
       - id: ruff
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.8.0
+  - repo: https://github.com/RobertCraigie/pyright-python
+    rev: v1.1.336
     hooks:
-      - id: mypy
-        additional_dependencies:
-          - pytest
+      - id: pyright

@@ -39,12 +39,12 @@ Issues = "{{ repository_url }}/issues"
 [tool.setuptools_scm]
 fallback_version = "0.0.1"
 
-[tool.mypy]
-warn_return_any = true
-warn_unused_configs = true
-disallow_untyped_defs = true
-disallow_untyped_calls = true
-ignore_missing_imports = false
+[tool.pyright]
+include = ["src", "tests"]
+pythonVersion = "3.12"
+pythonPlatform = "Linux"
+typeCheckingMode = "strict"
+venv = ".venv"
 
 [tool.black]
 line-length = 100
@@ -129,10 +129,9 @@ _ruff_check = { cmd = [
     "./src",
     "tests/",
 ], help = "Check the overall code" }
-_mypy_check = { cmd = [
-    "mypy",
-    "src/",
-    "tests/",
+_pyright_check = { cmd = [
+    "pyright",
+    "--warnings",
 ], help = "Check the typing of the code" }
 _typos_check = { cmd = [
     "typos",
@@ -237,7 +236,7 @@ spell = { composite = [
 lint = { composite = [
     "_black_check",
     "_isort_check",
-    "_mypy_check",
+    "_pyright_check",
     "_ruff_check",
     "_typos_check",
     "_lockfile_check",
@@ -302,7 +301,7 @@ dev = [
     "black~=23.12",
     "isort~=5.13",
     "ruff~=0.1",
-    "mypy~=1.8",
+    "pyright~=1.1",
     "coverage~=7.4",
     "toml~=0.10",
     "rope~=1.11",
