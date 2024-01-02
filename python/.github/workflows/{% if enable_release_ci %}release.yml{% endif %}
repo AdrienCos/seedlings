@@ -13,12 +13,12 @@ jobs:
     name: Build the Python dist
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/common
       - name: Build the Python dist
         run: pdm build
       - name: Export the Python dist
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dist
           path: dist/
@@ -27,12 +27,12 @@ jobs:
     name: Build the Pex executables
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/common
       - name: Build the Pex executables
         run: pdm pex-build
       - name: Export the Pex executables
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: pex
           path: dist/
@@ -42,10 +42,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build_dist]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/common
       - name: Download the Python dist
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: dist
           path: dist/
@@ -59,14 +59,14 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build_dist, build_pex]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Download the Python dist
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: dist
           path: dist/
       - name: Download the Pex executables
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: pex
           path: pex/

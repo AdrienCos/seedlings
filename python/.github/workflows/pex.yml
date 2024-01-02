@@ -11,12 +11,12 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/common
       - name: Build the Pex executables
         run: pdm pex-build
       - name: Export the Pex executables
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: pex
           path: dist/
