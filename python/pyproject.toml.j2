@@ -218,7 +218,7 @@ _build_pex = { cmd = [
     "--pex-args",
     "--requirement=requirements.txt",
 ], help = "Build a PEX file of the package" }
-_build_docker_image = { shell = "docker build -t {{ package_name }}:latest -t {{ package_name }}:${PACKAGE_VERSION} ." }
+_build_docker_image = { shell = "docker build -t {{ package_name }}:dev -t {{ package_name }}:${PACKAGE_VERSION} ." }
 _build_wheel = { cmd = [
     "pdm",
     "build",
@@ -268,10 +268,12 @@ clean = { cmd = [
     "--",
     ".",
 ], help = "Delete all the files not tracked by Git, restores those tracked" }
-docker-build = { composite = [
-    "_generate_version",
+ci-prebuild = { composite = [
     "_generate_requirements",
     "_build_wheel",
+], help = "Build the artifacts to allow the build CI to generate a Docker image" }
+docker-build = { composite = [
+    "_generate_version",
     "_build_docker_image",
 ], help = "Build a Docker image of the application" }
 pex-build = { composite = [
