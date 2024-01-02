@@ -260,19 +260,14 @@ dev-update = { composite = [
     "_dev_packages_update",
 ], help = "Update the development dependencies and tools" }
 clean = { cmd = [
-    "git",
-    "clean",
-    "--force",
-    # Allow the deletion of ignored files
-    "-x",
-    # Allow the deletion of directories
-    "-d",
-    "--exclude",
-    ".venv/",
-    "--exclude",
-    ".pdm-python",
-    "--exclude",
-    ".vscode/",
+    "pyclean",
+    "--debris",
+    "all",
+    "--erase",
+    ".version.env",
+    "--yes",
+    "--",
+    ".",
 ], help = "Delete all the files not tracked by Git, restores those tracked" }
 docker-build = { composite = [
     "_generate_version",
@@ -318,4 +313,5 @@ dev = [
     "pex~=2.1",
     "typos~=1.16",
     "copier~=9.1",
+    "pyclean~=2.7",
 ]
