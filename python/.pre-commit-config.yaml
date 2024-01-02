@@ -2,7 +2,7 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.5.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -19,34 +19,34 @@ repos:
     hooks:
       - id: hadolint-docker
   - repo: https://github.com/DavidAnson/markdownlint-cli2
-    rev: v0.8.1
+    rev: v0.11.0
     hooks:
       - id: markdownlint-cli2-docker
   - repo: https://github.com/crate-ci/typos
-    rev: v1.16.1
+    rev: v1.16.26
     hooks:
       - id: typos
         # Disable auto-fix
         args: []
   - repo: https://github.com/pdm-project/pdm
-    rev: 2.8.2
+    rev: 2.11.2
     hooks:
       - id: pdm-lock-check
   - repo: https://github.com/pycqa/isort
-    rev: 5.12.0
+    rev: 5.13.2
     hooks:
       - id: isort
   - repo: https://github.com/psf/black
-    rev: 23.7.0
+    rev: 23.12.1
     hooks:
       - id: black
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
-    rev: v0.0.282
+    rev: v0.1.9
     hooks:
       - id: ruff
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.4.1
+    rev: v1.8.0
     hooks:
       - id: mypy
         additional_dependencies:
