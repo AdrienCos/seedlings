@@ -268,7 +268,9 @@ clean = { cmd = [
     ".venv/",
     "--exclude",
     ".pdm-python",
-], help = "Delete all the caches and build artifacts" }
+    "--exclude",
+    ".vscode/",
+], help = "Delete all the files not tracked by Git, restores those tracked" }
 docker-build = { composite = [
     "_generate_version",
     "_generate_requirements",
