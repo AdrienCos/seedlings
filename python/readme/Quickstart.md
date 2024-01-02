@@ -1,8 +1,7 @@
 # Quickstart
 
 This file provides a quick documentation of the most useful features of this
-template. For more detailed documentation, see the [Deep Dive
-documentation](./Deep-dive.md).
+template.
 
 - [How do I...?](#how-do-i)
   - [...setup my development environment?](#setup-my-development-environment)
