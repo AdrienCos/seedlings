@@ -9,7 +9,7 @@ RUN addgroup --system abc && \
     --disabled-password \
     abc
 USER abc
-ENV PATH="${PATH}:/home/abc/.local/bin"
+ENV PATH="/home/abc/.local/bin:${PATH}"
 WORKDIR /app
 
 
