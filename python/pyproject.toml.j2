@@ -112,6 +112,10 @@ _isort_format = { cmd = [
     "./src",
     "tests/",
 ], help = "Format of the imports" }
+_mdformat_format = { cmd = [
+    "mdformat",
+    ".",
+], help = "Format the markdown files" }
 _black_check = { cmd = [
     "black",
     # Do not actually format the code
@@ -126,6 +130,12 @@ _isort_check = { cmd = [
     "./src",
     "tests/",
 ], help = "Check the formatting of the imports" }
+_mdformat_check = { cmd = [
+    "mdformat",
+    # Do not actually format the markdown files
+    "--check",
+    ".",
+], help = "Check the formatting of the the markdown files" }
 _ruff_check = { cmd = [
     "ruff",
     # Do not actually fix the code
@@ -233,6 +243,7 @@ _build_wheel = { cmd = [
 format = { composite = [
     "_black_format",
     "_isort_format",
+    "_mdformat_format",
 ], help = "Format the codebase" }
 spell = { composite = [
     "_typos_fix",
@@ -240,6 +251,7 @@ spell = { composite = [
 lint = { composite = [
     "_black_check",
     "_isort_check",
+    "_mdformat_check",
     "_pyright_check",
     "_ruff_check",
     "_typos_check",
@@ -307,6 +319,7 @@ dev = [
     "copier~=9.1",
     "coverage~=7.4",
     "isort~=5.13",
+    "mdformat~=0.7",
     "pex~=2.1",
     "pre-commit~=3.6",
     "pyclean~=2.7",
