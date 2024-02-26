@@ -1,4 +1,5 @@
 """Simple class used to demonstrate the Python template."""
+
 from loguru import logger
 
 
