@@ -63,6 +63,10 @@ parallel = true
 source = ["src/", ".tox/**/site-packages"]
 
 [tool.ruff]
+extend-exclude = ["setup.py"]
+line-length = 100
+
+[tool.ruff.lint]
 select = [
     "ERA",   # eradicate
     "ASYNC", # flake8-async
@@ -82,17 +86,15 @@ select = [
     "RUF",   # ruff
     "TRY",   # tryceratops
 ]
-extend-exclude = ["setup.py"]
-line-length = 100
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
 "tests/*" = ["S101", "D"]
 
-[tool.ruff.pydocstyle]
+[tool.ruff.lint.pydocstyle]
 convention = "google"
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 known-first-party = ["{{ package_name }}"]
 
 [tool.typos.default]
