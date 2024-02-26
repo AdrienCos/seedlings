@@ -7,16 +7,13 @@ name = "{{ package_name }}"
 authors = [{ name = "{{ author_name }}", email = "{{ author_email }}" }]
 description = "{{ project_name }}"
 readme = "README.md"
-requires-python = ">=3.9,<3.13"
+requires-python = ">=3.12,<3.13"
 license = { text = "MIT" }
 keywords = []
 
 classifiers = [
     "Natural Language :: English",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "License :: OSI Approved :: MIT License",
 ]
@@ -60,7 +57,7 @@ source = ["{{ package_name }}"]
 parallel = true
 
 [tool.coverage.paths]
-source = ["src/", ".tox/**/site-packages"]
+source = ["src/"]
 
 [tool.ruff]
 extend-exclude = ["setup.py"]
@@ -286,10 +283,6 @@ pex-build = { composite = [
     "_generate_requirements_no_hashes",
     "_build_pex",
 ], help = "Build a (reproducible) PEX executable of each entrypoint of the application" }
-cross-test = { cmd = [
-    "tox",
-    "run-parallel",
-], help = "Run the test suite against multiple Python versions" }
 template-update = { cmd = [
     "copier",
     "update",
@@ -318,7 +311,5 @@ dev = [
     "ruff==0.2.2",
     "setuptools-scm==8.0.4",
     "toml==0.10.2",
-    "tox-pdm==0.7.2",
-    "tox==4.13.0",
     "typos==1.18.2",
 ]
