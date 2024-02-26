@@ -36,6 +36,6 @@ FROM base as final
 ENV PATH="/app/.venv/bin:${PATH}"
 COPY --from=dependencies-installer /app/.venv/ /app/.venv/
 COPY --from=package-builder /app/dist/{{ package_name }}*.whl /app/
-RUN pip --python $(which python) install --no-cache-dir --no-deps ./{{ package_name }}*.whl
+RUN pip --python "$(which python)" install --no-cache-dir --no-deps ./{{ package_name }}*.whl
 
 ENTRYPOINT [ "{{ package_name }}" ]
