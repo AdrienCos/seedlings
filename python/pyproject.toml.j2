@@ -57,7 +57,7 @@ source = ["{{ package_name }}"]
 parallel = true
 
 [tool.coverage.paths]
-source = ["src/", ".tox/**/site-packages"]
+source = ["src/"]
 
 [tool.ruff]
 extend-exclude = ["setup.py"]
@@ -283,10 +283,6 @@ pex-build = { composite = [
     "_generate_requirements_no_hashes",
     "_build_pex",
 ], help = "Build a (reproducible) PEX executable of each entrypoint of the application" }
-cross-test = { cmd = [
-    "tox",
-    "run-parallel",
-], help = "Run the test suite against multiple Python versions" }
 template-update = { cmd = [
     "copier",
     "update",
@@ -315,7 +311,5 @@ dev = [
     "ruff==0.2.2",
     "setuptools-scm==8.0.4",
     "toml==0.10.2",
-    "tox-pdm==0.7.2",
-    "tox==4.13.0",
     "typos==1.18.2",
 ]

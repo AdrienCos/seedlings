@@ -7,7 +7,6 @@ template.
   - [...setup my development environment?](#setup-my-development-environment)
   - [...get the list of available commands?](#get-the-list-of-available-commands)
   - [...test my code?](#test-my-code)
-  - [...test my code against multiple Python versions?](#test-my-code-against-multiple-python-versions)
   - [...format my code?](#format-my-code)
   - [...spellcheck my project?](#spellcheck-my-project)
   - [...lint my code?](#lint-my-code)
@@ -73,18 +72,6 @@ short description of their purpose.
 
 This will run the test suite located in the `tests/` directory against the
 available Python3 install.
-
-### ...test my code against multiple Python versions?
-
-`pdm cross-test`
-
-This will use `tox` to test your code against all the Python versions defined in
-the `tox.ini` file (make sure to always keep this list consistent with the
-`requires-python` and the `classifiers` of the `pyproject.toml`).
-
-**Note**: You will to have every version of Python to run these tests available
-in your `$PATH`. We recommend the use of
-[`pyenv`](https://github.com/pyenv/pyenv) to manage your Python versions.
 
 ### ...format my code?
 
