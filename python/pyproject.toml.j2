@@ -295,12 +295,6 @@ template-update = { cmd = [
     "update",
     '--skip-answered',
 ], help = "Update the project to the latest version of the template" }
-template-check = { cmd = [
-    "copier",
-    "update",
-    "--pretend",
-    "--defaults",
-], help = "Check if the project uses the latest version of the template" }
 
 [tool.pdm.dev-dependencies]
 dev = [
