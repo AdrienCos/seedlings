@@ -1,0 +1,96 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "pre-commit": {
+    "commitMessageTopic": "pre-commit hook {{depName}}",
+    "enabled": true,
+    "fileMatch": [
+      "(^|/)\\.pre-commit-config\\.ya?ml$"
+    ]
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": [
+        "Dockerfile"
+      ],
+      "matchStrings": [
+        "ARG PDM_VERSION=(?<currentValue>.*?)\\n"
+      ],
+      "depNameTemplate": "pdm",
+      "datasourceTemplate": "pypi"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": [
+        "Dockerfile"
+      ],
+      "matchStrings": [
+        "ARG COPIER_VERSION=(?<currentValue>.*?)\\n"
+      ],
+      "depNameTemplate": "copier",
+      "datasourceTemplate": "pypi"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": [
+        "^copier.yml$"
+      ],
+      "matchStrings": [
+        "_min_copier_version: \"(?<currentValue>.*?)\""
+      ],
+      "depNameTemplate": "copier",
+      "datasourceTemplate": "pypi"
+    },
+    {
+      "customType": "regex",
+      "datasourceTemplate": "pypi",
+      "fileMatch": [
+        "^python/pyproject.toml.j2$"
+      ],
+      "matchStrings": [
+        "    \"(?<depName>.*?)==(?<currentValue>.*?)\""
+      ]
+    }
+  ],
+  "packageRules": [
+    {
+      "matchPackagePatterns": [
+        "typos"
+      ],
+      "groupName": "typos"
+    },
+    {
+      "matchPackagePatterns": [
+        "isort"
+      ],
+      "groupName": "isort"
+    },
+    {
+      "matchPackagePatterns": [
+        "black"
+      ],
+      "groupName": "black"
+    },
+    {
+      "matchPackagePatterns": [
+        "ruff"
+      ],
+      "groupName": "ruff"
+    },
+    {
+      "matchPackagePatterns": [
+        "pyright"
+      ],
+      "groupName": "pyright"
+    },
+    {
+      "matchPackagePatterns": [
+        "pdm"
+      ],
+      "groupName": "pdm"
+    }
+  ]
+}
