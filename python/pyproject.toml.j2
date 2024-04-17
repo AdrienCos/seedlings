@@ -274,10 +274,6 @@ clean = { cmd = [
     "--",
     ".",
 ], help = "Delete all the files not tracked by Git, restores those tracked" }
-ci-prebuild = { composite = [
-    "_generate_requirements",
-    "_build_wheel",
-], help = "Build the artifacts to allow the build CI to generate a Docker image" }
 docker-build = { composite = [
     "_generate_version",
     "_build_docker_image",
