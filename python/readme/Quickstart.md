@@ -195,7 +195,8 @@ and
 
 These commands will respectively check if your project is using the latest
 version of the template, and update your project to the latest release of the
-template.
+template. Your previous answers to the template questions will be kept, and only
+the new questions will be asked.
 
 Any conflict created by the update of the template will be written in the
 related files, with the usual merge conflict syntax. Make sure to review and

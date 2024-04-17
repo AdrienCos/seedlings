@@ -293,8 +293,7 @@ cross-test = { cmd = [
 template-update = { cmd = [
     "copier",
     "update",
-    '--conflict',
-    "inline",
+    '--skip-answered',
 ], help = "Update the project to the latest version of the template" }
 template-check = { cmd = [
     "copier",
