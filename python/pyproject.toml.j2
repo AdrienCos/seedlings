@@ -273,7 +273,7 @@ clean = { cmd = [
     "--yes",
     "--",
     ".",
-], help = "Delete all the files not tracked by Git, restores those tracked" }
+], help = "Remove all the build artifacts, caches, and other debris" }
 docker-build = { composite = [
     "_generate_version",
     "_build_docker_image",
