@@ -46,6 +46,6 @@ repos:
     hooks:
       - id: ruff
   - repo: https://github.com/RobertCraigie/pyright-python
-    rev: v1.1.362
+    rev: v1.1.364
     hooks:
       - id: pyright
