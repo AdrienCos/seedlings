@@ -2,7 +2,7 @@
 # Settings
 _templates_suffix: .j2
 _subdirectory: python/
-_min_copier_version: "9.2.0"
+_min_copier_version: "9.3.0"
 ---
 # Prompts
 project_name:
