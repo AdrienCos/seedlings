@@ -91,6 +91,15 @@
         "pdm"
       ],
       "groupName": "pdm"
+    },
+    {
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "automerge": true
     }
   ]
 }
