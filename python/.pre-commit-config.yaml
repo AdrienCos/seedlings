@@ -29,7 +29,7 @@ repos:
         # Disable auto-fix
         args: []
   - repo: https://github.com/pdm-project/pdm
-    rev: 2.17.0
+    rev: 2.17.1
     hooks:
       - id: pdm-lock-check
   - repo: https://github.com/pycqa/isort
