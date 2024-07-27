@@ -3,6 +3,9 @@
   "extends": [
     "config:recommended"
   ],
+  "schedule": [
+    "before 4am on Monday"
+  ],
   "pre-commit": {
     "commitMessageTopic": "pre-commit hook {{depName}}",
     "enabled": true,
