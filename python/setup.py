@@ -6,6 +6,6 @@ can be removed.
 See: https://setuptools.pypa.io/en/latest/userguide/declarative_config.html
 """
 
-from setuptools import setup
+from setuptools import setup  # type: ignore
 
 setup()
