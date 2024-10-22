@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json": "file:///home/adrien/src/seedlings/python/%7B%25%20if%20ci_platform%20%3D%3D%20%27gitlab_ci%27%20%25%7D.gitlab-ci%7B%25%20endif%20%25%7D/lint.yml"
+    }
+}

@@ -1,0 +1,10 @@
+---
+common-python-setup:
+  stage: setup
+  image: python:3.12
+  script:
+    - pdm sync
+  artifacts:
+    paths:
+      - .venv
+    expire_in: 1 week
