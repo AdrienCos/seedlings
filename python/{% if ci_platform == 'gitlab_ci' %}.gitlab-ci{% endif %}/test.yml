@@ -1,0 +1,12 @@
+---
+test-job:
+  stage: test
+  only:
+    - merge_requests
+    - branches
+  except:
+    - main
+    - master
+  image: python:3.12
+  script:
+    - pdm test
