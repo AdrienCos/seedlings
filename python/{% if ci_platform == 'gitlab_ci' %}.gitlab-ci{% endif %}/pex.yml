@@ -1,0 +1,20 @@
+---
+build-pex:
+  stage: build
+  only:
+    - merge_requests
+    - branches
+  except:
+    - main
+    - master
+  image: python:3.12
+  script:
+    - pdm pex-build
+  artifacts:
+    untracked: false
+    when: on_success
+    access: all
+    expire_in: "30 days"
+    name: pex
+    paths:
+      - dist/
