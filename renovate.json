@@ -60,40 +60,40 @@
   ],
   "packageRules": [
     {
-      "matchPackagePatterns": [
-        "typos"
-      ],
-      "groupName": "typos"
+      "groupName": "typos",
+      "matchPackageNames": [
+        "/typos/"
+      ]
     },
     {
-      "matchPackagePatterns": [
-        "isort"
-      ],
-      "groupName": "isort"
+      "groupName": "isort",
+      "matchPackageNames": [
+        "/isort/"
+      ]
     },
     {
-      "matchPackagePatterns": [
-        "black"
-      ],
-      "groupName": "black"
+      "groupName": "black",
+      "matchPackageNames": [
+        "/black/"
+      ]
     },
     {
-      "matchPackagePatterns": [
-        "ruff"
-      ],
-      "groupName": "ruff"
+      "groupName": "ruff",
+      "matchPackageNames": [
+        "/ruff/"
+      ]
     },
     {
-      "matchPackagePatterns": [
-        "pyright"
-      ],
-      "groupName": "pyright"
+      "groupName": "pyright",
+      "matchPackageNames": [
+        "/pyright/"
+      ]
     },
     {
-      "matchPackagePatterns": [
-        "pdm"
-      ],
-      "groupName": "pdm"
+      "groupName": "pdm",
+      "matchPackageNames": [
+        "/pdm/"
+      ]
     },
     {
       "matchUpdateTypes": [
