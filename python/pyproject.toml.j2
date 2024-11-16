@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=73", "setuptools_scm[toml]>=8.1", "wheel"]
+requires = ["setuptools>=73", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.9,<3.14"
 license = { text = "MIT" }
 keywords = []
-
+version = "0.0.1"
 classifiers = [
     "Natural Language :: English",
     "Programming Language :: Python :: 3",
@@ -24,7 +24,6 @@ dependencies = [
     "Click==8.1.7",
     "loguru==0.7.2",
 ]
-dynamic = ["version"]
 
 
 [project.urls]
@@ -35,9 +34,6 @@ Issues = "{{ repository_url }}/issues"
 
 [project.scripts]
 {{ package_name }} = "{{ package_name }}.cli:main"
-
-[tool.setuptools_scm]
-fallback_version = "0.0.1"
 
 [tool.pyright]
 include = ["src", "tests"]
@@ -101,8 +97,6 @@ known-first-party = ["{{ package_name }}"]
 extend-ignore-re = ["_commit:.*"]
 
 [tool.pdm.scripts]
-# Common configuration
-_.env_file = ".version.env"
 # Internal helper scripts
 _black_format = { cmd = [
     "black",
@@ -196,7 +190,6 @@ _dev_packages_update = { cmd = [
     # Only touch the dev packages
     "--dev",
 ], help = "Update the dev packages to their latest version" }
-_generate_version = { shell = "echo PACKAGE_VERSION=$(python -m setuptools_scm) | sed 's/+/./' > .version.env", help = "Export the package's version number to .version.env" }
 _generate_requirements = { cmd = [
     "pdm",
     "export",
@@ -224,7 +217,6 @@ _build_pex = { cmd = [
     "--pex-args",
     "--requirement=requirements.txt",
 ], help = "Build a PEX file of the package" }
-_build_docker_image = { shell = "docker build -t {{ package_name }}:dev -t {{ package_name }}:${PACKAGE_VERSION} ." }
 _build_wheel = { cmd = [
     "pdm",
     "build",
@@ -268,16 +260,10 @@ clean = { cmd = [
     "pyclean",
     "--debris",
     "all",
-    "--erase",
-    ".version.env",
-    "--yes",
     "--",
     ".",
 ], help = "Remove all the build artifacts, caches, and other debris" }
-docker-build = { composite = [
-    "_generate_version",
-    "_build_docker_image",
-], help = "Build a Docker image of the application" }
+docker-build = { shell = "docker build -t {{ package_name }}:dev -t {{ package_name }}:$(pdm show --version) .", help = "Build a Docker image of the application" }
 pex-build = { composite = [
     "_generate_requirements_no_hashes",
     "_build_pex",
