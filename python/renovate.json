@@ -24,42 +24,36 @@
   "packageRules": [
     {
       "groupName": "typos",
-      "additionalBranchPrefix": "",
       "matchPackageNames": [
         "/typos/"
       ]
     },
     {
       "groupName": "isort",
-      "additionalBranchPrefix": "",
       "matchPackageNames": [
         "/isort/"
       ]
     },
     {
       "groupName": "black",
-      "additionalBranchPrefix": "",
       "matchPackageNames": [
         "/black/"
       ]
     },
     {
       "groupName": "ruff",
-      "additionalBranchPrefix": "",
       "matchPackageNames": [
         "/ruff/"
       ]
     },
     {
       "groupName": "pyright",
-      "additionalBranchPrefix": "",
       "matchPackageNames": [
         "/pyright/"
       ]
     },
     {
       "groupName": "pdm",
-      "additionalBranchPrefix": "",
       "matchPackageNames": [
         "/pdm/"
       ]
