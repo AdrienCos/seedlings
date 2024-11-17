@@ -1,10 +1,6 @@
 ---
 name: Build Pex executables
 on:
-  push:
-    branches-ignore:
-      - "main"
-      - "master"
   pull_request:
 
 jobs:
