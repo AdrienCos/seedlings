@@ -12,7 +12,7 @@ jobs:
       - name: Build the Pex executables
         run: pdm pex-build
       - name: Export the Pex executables
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: pex
           path: dist/
