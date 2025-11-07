@@ -9,15 +9,15 @@
   "pre-commit": {
     "commitMessageTopic": "pre-commit hook {{depName}}",
     "enabled": true,
-    "fileMatch": [
-      "(^|/)\\.pre-commit-config\\.ya?ml$"
+    "managerFilePatterns": [
+      "/(^|/)\\.pre-commit-config\\.ya?ml$/"
     ]
   },
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": [
-        "Dockerfile"
+      "managerFilePatterns": [
+        "/Dockerfile/"
       ],
       "matchStrings": [
         "ARG PDM_VERSION=(?<currentValue>.*?)\\n"
@@ -27,8 +27,8 @@
     },
     {
       "customType": "regex",
-      "fileMatch": [
-        "Dockerfile"
+      "managerFilePatterns": [
+        "/Dockerfile/"
       ],
       "matchStrings": [
         "ARG COPIER_VERSION=(?<currentValue>.*?)\\n"
@@ -38,8 +38,8 @@
     },
     {
       "customType": "regex",
-      "fileMatch": [
-        "^copier.yml$"
+      "managerFilePatterns": [
+        "/^copier.yml$/"
       ],
       "matchStrings": [
         "_min_copier_version: \"(?<currentValue>.*?)\""
@@ -50,8 +50,8 @@
     {
       "customType": "regex",
       "datasourceTemplate": "pypi",
-      "fileMatch": [
-        "^python/pyproject.toml.j2$"
+      "managerFilePatterns": [
+        "/^python/pyproject.toml.j2$/"
       ],
       "matchStrings": [
         "    \"(?<depName>.*?)==(?<currentValue>.*?)\""
