@@ -3,7 +3,7 @@ ARG PDM_VERSION=2.26.2
 ARG COPIER_VERSION=9.10.3
 ARG USER_UID=1000
 
-FROM python:${PYTHON_VERSION}@sha256:6942ebef735aad5f708ef9c5e750cbe37dbc7751cee35c140e33764e34843ab9 AS base
+FROM python:${PYTHON_VERSION}@sha256:edf6433343f65f94707985869aeaafe8beadaeaee11c4bc02068fca52dce28dd AS base
 ARG USER_UID
 RUN addgroup --system abc && \
     adduser \
