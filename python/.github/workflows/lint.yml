@@ -9,4 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - uses: ./.github/actions/common
-      - run: pdm lint
+      - run: uv run ruff format --check ./src tests/
+      - run: uv run ruff check ./src tests/
+      - run: uv run ty check src tests
+      - run: uv lock --check
