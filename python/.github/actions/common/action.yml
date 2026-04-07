@@ -7,7 +7,6 @@ runs:
     - uses: actions/setup-python@v6
       with:
         python-version: "3.14"
-    - run: pip install pdm
-      shell: bash
-    - run: pdm sync
+    - uses: astral-sh/setup-uv@v6
+    - run: uv sync
       shell: bash

@@ -23,39 +23,21 @@
   },
   "packageRules": [
     {
-      "groupName": "typos",
-      "matchPackageNames": [
-        "/typos/"
-      ]
-    },
-    {
-      "groupName": "isort",
-      "matchPackageNames": [
-        "/isort/"
-      ]
-    },
-    {
-      "groupName": "black",
-      "matchPackageNames": [
-        "/black/"
-      ]
-    },
-    {
       "groupName": "ruff",
       "matchPackageNames": [
         "/ruff/"
       ]
     },
     {
-      "groupName": "pyright",
+      "groupName": "ty",
       "matchPackageNames": [
-        "/pyright/"
+        "/ty/"
       ]
     },
     {
-      "groupName": "pdm",
+      "groupName": "uv",
       "matchPackageNames": [
-        "/pdm/"
+        "/uv/"
       ]
     },
     {
@@ -66,19 +48,6 @@
         "digest"
       ],
       "automerge": true
-    }
-  ],
-  "customManagers": [
-    {
-      "customType": "regex",
-      "fileMatch": [
-        "^Dockerfile$"
-      ],
-      "matchStrings": [
-        "ARG PDM_VERSION=(?<currentValue>.*?)\\n"
-      ],
-      "depNameTemplate": "pdm",
-      "datasourceTemplate": "pypi"
     }
   ]
 }

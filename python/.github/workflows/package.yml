@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v5
       - uses: ./.github/actions/common
       - name: Build the Python dist
-        run: pdm build
+        run: uv build
       - name: Export the Python dist
         uses: actions/upload-artifact@v5
         with:

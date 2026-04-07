@@ -1,7 +1,18 @@
-ARG PYTHON_VERSION=3.14.3-slim
-ARG PDM_VERSION=2.26.7
+FROM ghcr.io/astral-sh/uv:debian-slim AS builder
+WORKDIR /app
+RUN --mount=type=cache,target=/root/.cache/uv \
+    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv sync --frozen --no-install-project --no-dev
+COPY ./src /app/src
+COPY ./README.md /app/README.md
+RUN --mount=type=cache,target=/root/.cache/uv \
+    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv sync --frozen --no-dev
 
-FROM python:${PYTHON_VERSION}@sha256:fb83750094b46fd6b8adaa80f66e2302ecbe45d513f6cece637a841e1025b4ca as base
+
+FROM debian:bookworm-slim AS final
 RUN addgroup --system abc && \
     adduser \
     --shell /bin/sh \
@@ -9,33 +20,8 @@ RUN addgroup --system abc && \
     --disabled-password \
     abc
 USER abc
-ENV PATH="/home/abc/.local/bin:${PATH}"
 WORKDIR /app
-
-
-FROM base as base-pdm
-ARG PDM_VERSION
-RUN pip install --user --no-cache-dir pdm==${PDM_VERSION}
-COPY --chown=abc:abc ./pyproject.toml /app/
-COPY --chown=abc:abc ./pdm.lock /app/
-
-
-
-FROM base-pdm as package-builder
-COPY --chown=abc:abc ./src /app/src
-RUN pdm build --no-sdist
-
-
-
-FROM base-pdm as dependencies-installer
-RUN pdm sync --production --no-self
-
-
-
-FROM base as final
+COPY --from=builder --chown=abc:abc /app/.venv /app/.venv
 ENV PATH="/app/.venv/bin:${PATH}"
-COPY --from=dependencies-installer /app/.venv/ /app/.venv/
-COPY --from=package-builder /app/dist/{{ package_name }}*.whl /app/
-RUN pip --python "$(which python)" install --no-cache-dir --no-deps ./{{ package_name }}*.whl
 
 ENTRYPOINT [ "{{ package_name }}" ]

@@ -18,30 +18,13 @@ repos:
     rev: v2.14.0
     hooks:
       - id: hadolint
-  - repo: https://github.com/crate-ci/typos
-    rev: v1.39.0
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.10.8
     hooks:
-      - id: typos
-        # Disable auto-fix
-        args: []
-  - repo: https://github.com/pdm-project/pdm
-    rev: 2.26.7
-    hooks:
-      - id: pdm-lock-check
-  - repo: https://github.com/pycqa/isort
-    rev: 7.0.0
-    hooks:
-      - id: isort
-  - repo: https://github.com/psf/black
-    rev: 25.12.0
-    hooks:
-      - id: black
+      - id: uv-lock
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
     rev: v0.14.14
     hooks:
+      - id: ruff-format
       - id: ruff
-  - repo: https://github.com/RobertCraigie/pyright-python
-    rev: v1.1.408
-    hooks:
-      - id: pyright
