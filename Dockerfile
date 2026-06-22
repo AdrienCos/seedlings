@@ -1,11 +1,11 @@
-ARG PYTHON_VERSION=3.14.5
+ARG PYTHON_VERSION=3.14.6
 ARG COPIER_VERSION=9.14.3
 ARG USER_UID=1000
 
 FROM ghcr.io/astral-sh/uv:0.10.8 AS uv
 FROM ghcr.io/casey/just:1.49.0 AS just
 
-FROM python:${PYTHON_VERSION}@sha256:2081144b23b38daa7fae3b7ee4b42cf2f858d88b0452736274aafaba96f3a6b6 AS base
+FROM python:${PYTHON_VERSION}@sha256:4d7dd74c5b2d3151fe58eb8ecc9c56be13471a240ce5423ba765b04f8f95ebe8 AS base
 ARG USER_UID
 RUN addgroup --system abc && \
     adduser \
