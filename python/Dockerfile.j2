@@ -13,15 +13,16 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 
 
 FROM debian:bookworm-slim AS final
-RUN addgroup --system abc && \
+RUN addgroup --system --gid 1000 abc && \
     adduser \
     --shell /bin/sh \
     --ingroup abc \
     --disabled-password \
+    --uid 1000 \
     abc
-USER abc
+USER 1000
 WORKDIR /app
-COPY --from=builder --chown=abc:abc /app/.venv /app/.venv
+COPY --from=builder --chown=1000:1000 /app/.venv /app/.venv
 ENV PATH="/app/.venv/bin:${PATH}"
 
 ENTRYPOINT [ "{{ package_name }}" ]
