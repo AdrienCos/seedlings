@@ -5,7 +5,7 @@ ARG USER_UID=1000
 FROM ghcr.io/astral-sh/uv:0.12.7 AS uv
 FROM ghcr.io/casey/just:1.58.0 AS just
 
-FROM python:${PYTHON_VERSION}@sha256:b0aed0e0059e9b1527ef57689a7206f32526627b0713e2228a916df62880188a AS base
+FROM python:${PYTHON_VERSION}@sha256:8edbf9e42c7fb168b9c523718ed907117e6d2e60f5889c0c499bbda3a787da53 AS base
 ARG USER_UID
 RUN addgroup --system abc && \
     adduser \
