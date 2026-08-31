@@ -15,7 +15,7 @@ repos:
         # Always check, not only during merges
         args: [--assume-in-merge]
   - repo: https://github.com/AleksaC/hadolint-py
-    rev: v2.14.0
+    rev: v2.15.1
     hooks:
       - id: hadolint
   - repo: https://github.com/astral-sh/uv-pre-commit
