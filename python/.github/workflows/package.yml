@@ -12,7 +12,7 @@ jobs:
       - name: Build the Python dist
         run: uv build
       - name: Export the Python dist
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: dist
           path: dist/
