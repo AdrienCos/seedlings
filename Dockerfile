@@ -2,7 +2,7 @@ ARG PYTHON_VERSION=3.14.7
 ARG COPIER_VERSION=9.17.2
 ARG USER_UID=1000
 
-FROM ghcr.io/astral-sh/uv:0.12.10 AS uv
+FROM ghcr.io/astral-sh/uv:0.12.23 AS uv
 FROM ghcr.io/casey/just:1.58.0 AS just
 
 FROM python:${PYTHON_VERSION}@sha256:be8ccd085666c34273c9dc5607c9842f8b2e3116128aae45148ce164c07ce09d AS base
